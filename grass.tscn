@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://csy0gwvwp1jke"]
+
+[ext_resource type="Script" path="res://grass.gd" id="1_k0wq4"]
+[ext_resource type="Texture2D" uid="uid://c5p036bebn3bq" path="res://grass.png" id="1_nfh5h"]
+
+[sub_resource type="Animation" id="Animation_qqagq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0628319]
+}
+
+[sub_resource type="Animation" id="Animation_c6y4v"]
+resource_name = "swiying"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0628319, -0.0628319, 0.0628319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0yb5"]
+_data = {
+"RESET": SubResource("Animation_qqagq"),
+"swaying": SubResource("Animation_c6y4v")
+}
+
+[node name="grass" type="Node2D"]
+script = ExtResource("1_k0wq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+skew = 0.0628319
+texture = ExtResource("1_nfh5h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0yb5")
+}

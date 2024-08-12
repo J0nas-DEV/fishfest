@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://dysa83g7134uu"]
+
+[ext_resource type="PackedScene" uid="uid://3jg37ra5xtsr" path="res://mc_fish.tscn" id="1_eauoq"]
+[ext_resource type="Texture2D" uid="uid://bkto0nftrpopy" path="res://icon.svg" id="2_2syxe"]
+[ext_resource type="Shader" path="res://sea.gdshader" id="3_v68ie"]
+[ext_resource type="Texture2D" uid="uid://c5p036bebn3bq" path="res://grass.png" id="4_wurkk"]
+[ext_resource type="Texture2D" uid="uid://bmvr0cydbexsp" path="res://meat.png" id="5_bhtpe"]
+[ext_resource type="Script" path="res://fps.gd" id="6_3g8ap"]
+[ext_resource type="PackedScene" uid="uid://c1kj5o6fvgnwk" path="res://spawner.tscn" id="7_ifhma"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70lj6"]
+shader = ExtResource("3_v68ie")
+shader_parameter/color = Color(0.176471, 0.501961, 0.768627, 0.235294)
+
+[node name="sea" type="Node2D" groups=["bullet", "enemy"]]
+
+[node name="mc_fish" parent="." instance=ExtResource("1_eauoq")]
+position = Vector2(440, 238)
+motion_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_70lj6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2syxe")
+metadata/_edit_use_anchors_ = true
+
+[node name="grass" type="Node2D" parent="."]
+
+[node name="Grass" type="Sprite2D" parent="grass"]
+position = Vector2(35, 602)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass2" type="Sprite2D" parent="grass"]
+position = Vector2(98, 605)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass3" type="Sprite2D" parent="grass"]
+position = Vector2(170, 605)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass4" type="Sprite2D" parent="grass"]
+position = Vector2(251, 608)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass5" type="Sprite2D" parent="grass"]
+position = Vector2(329, 614)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass6" type="Sprite2D" parent="grass"]
+position = Vector2(404, 617)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass7" type="Sprite2D" parent="grass"]
+position = Vector2(503, 617)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass8" type="Sprite2D" parent="grass"]
+position = Vector2(584, 605)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass9" type="Sprite2D" parent="grass"]
+position = Vector2(650, 608)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass10" type="Sprite2D" parent="grass"]
+position = Vector2(734, 611)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass11" type="Sprite2D" parent="grass"]
+position = Vector2(809, 614)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass12" type="Sprite2D" parent="grass"]
+position = Vector2(875, 614)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass13" type="Sprite2D" parent="grass"]
+position = Vector2(950, 605)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass14" type="Sprite2D" parent="grass"]
+position = Vector2(1010, 620)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass15" type="Sprite2D" parent="grass"]
+position = Vector2(1073, 617)
+texture = ExtResource("4_wurkk")
+
+[node name="Grass16" type="Sprite2D" parent="grass"]
+position = Vector2(1112, 611)
+texture = ExtResource("4_wurkk")
+
+[node name="Meat" type="Sprite2D" parent="."]
+position = Vector2(59, 336)
+scale = Vector2(3.01563, 3.42969)
+texture = ExtResource("5_bhtpe")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+
+[node name="fps" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "fps"
+script = ExtResource("6_3g8ap")
+
+[node name="spawner" parent="." instance=ExtResource("7_ifhma")]
+position = Vector2(1136, 228)
+
+[node name="CollisionShape2D" parent="spawner" index="0"]
+position = Vector2(66, 94)
+
+[editable path="spawner"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://m8rqb5d5op7t"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_cymw1"]
+[ext_resource type="Texture2D" uid="uid://cilk3vbjfuny2" path="res://snap.png" id="2_4h45i"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_5p00a"]
+file = "output.mp4"
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cymw1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4h45i")
+expand_mode = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 777.0
+offset_bottom = 492.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.597432, 0.568673)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+layout_mode = 2
+stream = SubResource("VideoStreamTheora_5p00a")
+autoplay = true
+loop = true
+
+[node name="start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -38.0
+offset_right = -53.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Start"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = 71.0
+offset_right = -55.0
+offset_bottom = 146.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.523
+anchor_right = 0.26
+anchor_bottom = 0.523
+offset_left = -167.52
+offset_top = -49.904
+offset_right = 168.48
+offset_bottom = 50.096
+text = "Must Protect The Meat By The Hungry Fish"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,312 @@
+[gd_scene load_steps=19 format=3 uid="uid://dysa83g7134uu"]
+
+[ext_resource type="PackedScene" uid="uid://3jg37ra5xtsr" path="res://mc_fish.tscn" id="1_eauoq"]
+[ext_resource type="Texture2D" uid="uid://cb22phbyjul7s" path="res://red coral.png" id="3_g4q4u"]
+[ext_resource type="PackedScene" uid="uid://csy0gwvwp1jke" path="res://grass.tscn" id="3_p4ck8"]
+[ext_resource type="Texture2D" uid="uid://ge0q8860lnks" path="res://yellow coral.png" id="4_enlm4"]
+[ext_resource type="Script" path="res://scene.gd" id="5_2cj2m"]
+[ext_resource type="Texture2D" uid="uid://bmvr0cydbexsp" path="res://meat.png" id="5_bhtpe"]
+[ext_resource type="Script" path="res://time.gd" id="6_3g8ap"]
+[ext_resource type="PackedScene" uid="uid://c1kj5o6fvgnwk" path="res://spawner.tscn" id="7_ifhma"]
+
+[sub_resource type="Gradient" id="Gradient_ls0vh"]
+colors = PackedColorArray(0.563454, 0.894424, 1, 1, 0.232031, 0.757769, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y0ms3"]
+gradient = SubResource("Gradient_ls0vh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ha7q"]
+size = Vector2(82, 651)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1uh0l"]
+font_size = 200
+font_color = Color(0.803922, 0.0980392, 0, 1)
+shadow_color = Color(0.372549, 0.372549, 0.372549, 1)
+shadow_offset = Vector2(-18.22, 20.15)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ceig"]
+font_size = 200
+font_color = Color(0.886275, 0.776471, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5cmao"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsnqc"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ym32g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lose:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, -322)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(189, -403)]
+}
+
+[sub_resource type="Animation" id="Animation_pb50c"]
+resource_name = "lose"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lose:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(347, -417), Vector2(329, 127)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("winner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(189, -403), Vector2(174, 187.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xg2q"]
+_data = {
+"RESET": SubResource("Animation_ym32g"),
+"lose": SubResource("Animation_pb50c")
+}
+
+[node name="sea" type="Node2D" groups=["bullet", "enemy"]]
+script = ExtResource("5_2cj2m")
+
+[node name="sea" type="Sprite2D" parent="."]
+position = Vector2(570.612, 290.75)
+rotation = 1.5708
+scale = Vector2(2.77734, 1268.72)
+texture = SubResource("GradientTexture1D_y0ms3")
+
+[node name="mc_fish" parent="." instance=ExtResource("1_eauoq")]
+position = Vector2(440, 238)
+motion_mode = 1
+
+[node name="corals" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="RedCoral" type="Sprite2D" parent="corals"]
+position = Vector2(-21, 572)
+scale = Vector2(1.67188, 2.34375)
+texture = ExtResource("3_g4q4u")
+
+[node name="YellowCoral" type="Sprite2D" parent="corals"]
+position = Vector2(69, 572)
+scale = Vector2(1.75, 2.5)
+texture = ExtResource("4_enlm4")
+
+[node name="RedCoral2" type="Sprite2D" parent="corals"]
+position = Vector2(172.5, 577)
+scale = Vector2(1.67188, 2.34375)
+texture = ExtResource("3_g4q4u")
+
+[node name="YellowCoral2" type="Sprite2D" parent="corals"]
+position = Vector2(262.5, 577)
+scale = Vector2(1.75, 2.5)
+texture = ExtResource("4_enlm4")
+
+[node name="RedCoral3" type="Sprite2D" parent="corals"]
+position = Vector2(366.5, 574)
+scale = Vector2(1.67188, 2.34375)
+texture = ExtResource("3_g4q4u")
+
+[node name="YellowCoral3" type="Sprite2D" parent="corals"]
+position = Vector2(456.5, 574)
+scale = Vector2(1.75, 2.5)
+texture = ExtResource("4_enlm4")
+
+[node name="RedCoral4" type="Sprite2D" parent="corals"]
+position = Vector2(542.5, 579)
+scale = Vector2(1.67188, 2.34375)
+texture = ExtResource("3_g4q4u")
+
+[node name="YellowCoral4" type="Sprite2D" parent="corals"]
+position = Vector2(632.5, 579)
+scale = Vector2(1.75, 2.5)
+texture = ExtResource("4_enlm4")
+
+[node name="grass" type="Node2D" parent="."]
+
+[node name="grass" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(-28, 607)
+
+[node name="grass2" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(32, 604)
+
+[node name="grass3" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(87, 604)
+
+[node name="grass4" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(150, 601)
+
+[node name="grass5" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(196, 615)
+
+[node name="grass6" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(256, 612)
+
+[node name="grass7" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(311, 612)
+
+[node name="grass8" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(374, 609)
+
+[node name="grass9" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(438, 610)
+
+[node name="grass10" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(498, 607)
+
+[node name="grass11" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(553, 607)
+
+[node name="grass12" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(616, 604)
+
+[node name="grass13" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(660, 610)
+
+[node name="grass14" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(720, 607)
+
+[node name="grass15" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(775, 607)
+
+[node name="grass16" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(838, 604)
+
+[node name="grass17" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(897, 605)
+
+[node name="grass18" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(957, 602)
+
+[node name="grass19" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(1012, 602)
+
+[node name="grass20" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(1075, 599)
+
+[node name="grass21" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(1125, 604)
+
+[node name="grass22" parent="grass" instance=ExtResource("3_p4ck8")]
+position = Vector2(1178, 601)
+
+[node name="meat" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="meat"]
+position = Vector2(-137, 315)
+shape = SubResource("RectangleShape2D_1ha7q")
+
+[node name="Meat" type="Sprite2D" parent="meat"]
+position = Vector2(58, 336)
+scale = Vector2(1.75781, 1.74609)
+texture = ExtResource("5_bhtpe")
+
+[node name="spawner" parent="." instance=ExtResource("7_ifhma")]
+position = Vector2(1136, 228)
+
+[node name="CollisionShape2D" parent="spawner" index="0"]
+position = Vector2(66, 94)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="lose" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -646.0
+offset_right = 246.0
+offset_bottom = -373.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOSE"
+label_settings = SubResource("LabelSettings_1uh0l")
+text_direction = 3
+
+[node name="winner" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.0
+offset_top = -727.0
+offset_right = 417.0
+offset_bottom = -454.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WINNER"
+label_settings = SubResource("LabelSettings_4ceig")
+text_direction = 3
+
+[node name="time" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 15.0
+offset_right = 37.0
+offset_bottom = 84.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "fps"
+label_settings = SubResource("LabelSettings_5cmao")
+script = ExtResource("6_3g8ap")
+
+[node name="count" type="Label" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 18.0
+offset_right = 137.0
+offset_bottom = 87.0
+text = "count : 0"
+label_settings = SubResource("LabelSettings_vsnqc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+libraries = {
+"": SubResource("AnimationLibrary_8xg2q")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="meat" to="." method="_on_meat_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="spawner"]

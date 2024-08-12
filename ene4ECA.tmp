@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlycdq0worrm0"]
+
+[ext_resource type="Texture2D" uid="uid://0jjlvfn5xo2a" path="res://hungry fish.png" id="1_3laoh"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_gs7jb"]
+[ext_resource type="Texture2D" uid="uid://cg61pu00vggwk" path="res://elliminated yeah.png" id="2_ejrv4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sd8va"]
+radius = 54.6191
+
+[node name="enemy" type="Area2D"]
+script = ExtResource("1_gs7jb")
+
+[node name="normal" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_3laoh")
+
+[node name="elliminated" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("2_ejrv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 7)
+shape = SubResource("CircleShape2D_sd8va")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
