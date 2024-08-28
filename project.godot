@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="fish_fest"
+config/name="fish meat defender"
+config/description="defend your meat from hungry fish that wants to take your meat"
 run/main_scene="res://main_menu.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/show_image=false
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://snap.png"
 config/icon="res://crying.png"
 
 [display]

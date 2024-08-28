@@ -20,4 +20,3 @@ func _on_meat_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-

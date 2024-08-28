@@ -20,14 +20,6 @@ func _physics_process(_delta: float) -> void:
 	#global_position = global_position.move_toward(mouseposition, delta * SPEED)
 	move_and_slide()
 
-func _process(_delta: float) -> void:
-	if mouseposition.x > global_position.x:
-		sprite2d.flip_h = false
-		flip = false
-	elif mouseposition.x < global_position.x:
-		sprite2d.flip_h = true
-		flip = true
-
 func fire() -> void:
 	animation.play("fire")
 	var bullet: Bullet = preload("res://bullet.tscn").instantiate()
@@ -39,4 +31,3 @@ func fire() -> void:
 		bullet.global_position.x += 125
 		bullet.velocity = bullet.transform.x * 700
 	get_tree().current_scene.add_child(bullet)
-

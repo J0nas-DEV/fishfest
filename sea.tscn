@@ -232,8 +232,9 @@ position = Vector2(58, 336)
 scale = Vector2(1.75781, 1.74609)
 texture = ExtResource("5_bhtpe")
 
-[node name="spawner" parent="." instance=ExtResource("7_ifhma")]
+[node name="spawner" parent="." node_paths=PackedStringArray("time") instance=ExtResource("7_ifhma")]
 position = Vector2(1136, 228)
+time = NodePath("../Timer")
 
 [node name="CollisionShape2D" parent="spawner" index="0"]
 position = Vector2(66, 94)

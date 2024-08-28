@@ -1,11 +1,19 @@
 extends Area2D
 var enemy = preload("res://enemy.tscn")
 @onready var timer: Timer = $Timer
+@export var time: Timer = null
+
 func _process(_delta: float) -> void:
 	if timer.is_stopped():
 		timer.start()
 
 func _on_timer_timeout() -> void:
+	spawn()
+	if time.time_left == 490:
+		for i in range(100):
+			spawn()
+
+func spawn() -> void:
 	var new_enemy: Enemy = enemy.instantiate()
 	new_enemy.global_position.x = global_position.x * randi_range(1,3)
 	new_enemy.global_position.y = global_position.y * randi_range(0,3)
